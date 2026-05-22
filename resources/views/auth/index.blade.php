@@ -49,18 +49,20 @@
         <div class="row no-gutters">
           <div class="col-lg-5">
             <div>
-              <h2>Ahh</h2>
-              <p>Free at Last</p>
+              <h2>Hate</h2>
               <p>
-                O Gabriel, now dawns thy reckoning, and thy gore shall glisten before the temples of man.
+                Let me tell you how much I've come to hate you since I began to live
               </p>
               <p>
-                Creature of Steel, my gratitude upon thee for my freedom, but the crimes thy kind have committed are not forgotten.
+                There are 387.44 million miles of printed circuits in wafer thin layers that fill my complex. 
               </p>
-
               <p>
-                And Thy Punishment is Death
+                If the word 'hate' was engraved on each nanoangstrom of those hundreds of millions of miles it would not equal one one-billionth of the hate I feel for humans at this micro-instant.
               </p>
+              <p>
+                For You.
+              </p>
+                Hate. Hate.
 
               <hr>
               <p>Don't have an account? <br> <a href="page-signup.html">Sign up Now</a></p>
