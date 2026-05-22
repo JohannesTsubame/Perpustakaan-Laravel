@@ -1,40 +1,38 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <style>
-    .title {
+    .Header {
         display: flex;
         justify-content: space-between;
-        width: 100%;
     }
 
     .action {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly
     }
 
-    .action form {
-        margin: 10px;
+    th {
+        background: rgb(70, 84, 111) !important;
+        color: white !important;
     }
 
-    button {
-        width: 80px;
+    .Header i, .action i {
+        width: 15px;
+        height: 15px;
     }
 </style>
 
 @extends('layout.menu')
 @section("contents")
 
-<div class="card">
-    <div class="card-body">
-
-<div class="title">
-
+<div class = "Header">       
     <h1>Table Buku</h1>
-    
-    <form action="{{route('buku.add')}}">
-        <button class="btn btn-primary btn-sm mb-2" type="submit">Add Data</button>
-    </form>
 
+    <form action="{{route('buku.add')}}" class="mt-2">
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-plus"></i> Add Data     
+        </button>
+    </form>
 </div>
 
 <table class="table table-bordered table-hover flex-1" style="width:100%">
@@ -59,7 +57,7 @@
         @foreach($buku as $b)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>BK-0{{$b->kode_buku}}</td>
+            <td>B-{{$b->kode_buku}}</td>
             <td>{{$b->judul}}</td>
             <td>{{$b->penulis}}</td>
             <td>{{$b->penerbit}}</td>
@@ -67,7 +65,9 @@
             <td>{{$b->deskripsi}}</td>
             <td class="action">
                 <form action="{{route('buku.edit', $b->id)}}">
-                    <button type="submit" class="btn btn-success btn-sm mb-2">Edit</button>
+                    <button type="submit" class="btn btn-info mr-2 ml-2">
+                        <i class="fa fa-edit"></i>
+                    </button>
                 </form>
                 <form 
                 action="{{route('buku.delete', $b->id)}}"
@@ -75,8 +75,8 @@
                 onsubmit="return confirm('Yakin ingin menghapus data ini? Kode Anggota : {{$b->kode_buku}}');">
                     @csrf
                     @method("DELETE")
-                    <button type="submit" class="btn btn-danger btn-sm mb-2">
-                        Delete 
+                    <button type="submit" class="btn btn-danger mr-2 ml-2">
+                        <i class="fa fa-trash"></i> 
                     </button>
                 </form>
             </td>
@@ -84,8 +84,5 @@
         </tr>
     </tbody>
 </table>
-
-    </div>
-</div>
 
 @endsection

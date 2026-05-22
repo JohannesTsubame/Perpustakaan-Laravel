@@ -1,37 +1,40 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <style>
-    .title {
-        display: flex
+    .Header {
+        display: flex;
+        justify-content: space-between;
     }
 
     .action {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly
     }
 
-    .action form {
-        margin: 10px;
+    th {
+        background: rgb(70, 84, 111) !important;
+        color: white !important;
     }
 
-    button {
-        width: 80px
+    .Header i, .action i {
+        width: 15px;
+        height: 15px;
     }
 </style>
 
 @extends('layout.menu')
 @section("contents")
 
-<div class="card">
-    <div class="card-body">
-
-<div class = "title">       
+<div class = "Header">       
     <h1>Table Pengembalian</h1>
 
-    <form action="{{route('pengembalian.add')}}" style="margin: 8px 0px 0px 1074px">
-        <button type="submit" class="btn btn-primary btn-sm mb-2">Add Data</button>
+    <form action="{{route('pengembalian.add')}}" class="mt-2">
+        <button type="submit" class="btn btn-primary ml-2">
+            <i class="fa fa-plus"></i> Add Data     
+        </button>
     </form>
 </div>
+
 
 <table class="table table-bordered table-hover flex-1" style="width:100%">
     <thead>
@@ -54,7 +57,9 @@
             <td>{{$p->kondisi_buku}}</td>
             <td class="action">
                 <form action="{{route('pengembalian.edit', $p->id)}}">
-                    <button type="submit" class="btn btn-success btn-sm mb-2">Edit</button>
+                    <button type="submit" class="btn btn-info mr-2 ml-2">
+                        <i class="fa fa-edit"></i>
+                    </button>
                 </form>
                 <form 
                 action="{{route('pengembalian.delete', $p->id)}}"
@@ -62,8 +67,8 @@
                 onsubmit="return confirm('Yakin ingin menghapus data ini? ID Peminjaman : {{$p->peminjaman_id}}');">
                     @csrf
                     @method("DELETE")
-                    <button type="submit" class="btn btn-danger btn-sm mb-2">
-                        Delete 
+                    <button type="submit" class="btn btn-danger mr-2 ml-2">
+                        <i class="fa fa-trash"></i>
                     </button>
                 </form>
             </td>
@@ -71,8 +76,5 @@
         @endforeach
     </tbody>
 </table>
-
-    </div>
-</div>
 
 @endsection

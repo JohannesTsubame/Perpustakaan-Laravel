@@ -25,19 +25,24 @@
         <div class="am-header-left">
             <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
             <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-            <a href="index.html" class="am-logo">STMIK BJB</a>
+            <a href="index.html" class="am-logo">PERPUS STMIK BJB</a>
         </div>
 
         <div class="am-header-right">
 
             <div class="dropdown dropdown-profile">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    <img src="img/img3.jpg" class="wd-32 rounded-circle" alt="">
-                    <span class="logged-name"><span class="hidden-xs-down">Jane Doe</span> <i class="fa fa-angle-down mg-l-3"></i></span>
+                    <img src="{{ asset("img/Knight.png") }}" class="wd-32 rounded-circle" alt="">
+                    <span class="logged-name">
+                        <span class="hidden-xs-down">
+                            The Indie Video Game Character Colloquially Known as the Hollow Knight (Even Though it Isn't the Hollow Knight)
+                        </span> 
+                        <i class="fa fa-angle-down mg-l-3"></i>
+                    </span>
                 </a>
                 <div class="dropdown-menu wd-200">
                     <ul class="list-unstyled user-profile-nav">
-                        <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                        <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
                         <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
                     </ul>
                 </div>
@@ -48,7 +53,7 @@
     <div class="am-sideleft">
         <ul class="nav am-sideleft-tab">
             <li class="nav-item">
-                <a href="#" class="nav-link non active"><i class="icon ion-ios-home-outline tx-24"></i></a>
+                <a href="#" class="nav-link non active"><i class="icon ion-ios-home tx-24"></i></a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link non"></a>
@@ -71,28 +76,28 @@
                 <ul class="nav am-sideleft-menu">
                     <li class="nav-item">
                         <a href="{{route('dashboard')}}" class="nav-link">
-                            <i class="icon ion-ios-home-outline"></i>
+                            <i class="icon ion-ios-home"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{route('anggota.index')}}" class="nav-link">
-                            <i class="icon ion-ios-people-outline"></i>
+                            <i class="icon ion-ios-people"></i>
                             <span>Anggota</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{route('buku.index')}}" class="nav-link">
-                            <i class="icon ion-ios-book-outline"></i>
+                            <i class="icon ion-ios-book"></i>
                             <span>Buku</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{route('kategori.index')}}" class="nav-link">
-                            <i class="icon ion-ios-list-outline"></i>
+                            <i class="icon ion-ios-list"></i>
                             <span>Kategori</span>
                         </a>
                     </li>
@@ -122,7 +127,7 @@
                     <!--
                     <li class="nav-item">
                         <a href="" class="nav-link with-sub">
-                            <i class="icon ion-ios-gear-outline"></i>
+                            <i class="icon ion-ios-gear"></i>
                             <span>Forms</span>
                         </a>
                         <ul class="nav-sub">

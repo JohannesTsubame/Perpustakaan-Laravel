@@ -15,8 +15,11 @@ class Cpengembalian extends Controller
         ->leftJoin("peminjaman", "pengembalian.peminjaman_id", "=", "peminjaman.id")
         ->select(
             "pengembalian.*", 
-            "peminjaman")
+            "peminjaman.id as peminjaman_id",
+            "peminjaman.tanggal_kembali as tanggal_dikembalikan")
         ->get();
+
+        return view("pengembalian.index", compact("pengembalian"));
     }
 
     public function add() {
