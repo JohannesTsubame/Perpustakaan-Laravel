@@ -3,22 +3,59 @@
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('kategori.update', $kategori->id)}}" method="POST">
-    @csrf
-    @method("PUT")
+<style>
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+    }
 
-    <a href="{{route('kategori.index')}}">Kembali</a>
-    <br>
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-    Nama Kategori :
-    <input type="text" name="nama_kategori" value="{{old('nama_kategori', $kategori->nama_kategori)}}" required>
-    <br>
+    label {
+        font-size: 20px
+    }
 
-    Deskripsi :
-    <input type="text" name="deskripsi" value="{{old('deskripsi', $kategori->deskripsi)}}" required>
-    <br>
+    button {
+        width: 120px;
+    }
+</style>
 
-    <button type="submit">Save Data</button>
-</form>
+<div class="card">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Kategori</h2>
+        <a href="{{route('kategori.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="{{route('kategori.update', $kategori->id)}}" method="POST">
+            @csrf
+            @method("PUT")
+
+            <div class="form-group row">
+                <label class="col-sm-2">Nama Kategori :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="nama_kategori" value="{{old('nama_kategori', $kategori->nama_kategori)}}" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Deskripsi :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="deskripsi" value="{{old('deskripsi', $kategori->deskripsi)}}" required>
+                </div>
+            </div>
+
+            <div class="action">
+                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection

@@ -3,58 +3,103 @@
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('peminjaman.save')}}" method="POST">
-    @csrf
+<style>
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+    }
 
-    <a href="{{route('peminjaman.index')}}">Kembali</a>
-    <br>
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-    <h2>Anggota ID :</h2>
-    @if (empty($anggota->id) == False)
-        Anggota Tidak Ada, <a href="{{route('anggota.add')}}">Tambahkan Anggota.</a>
-    @else
-        <select name="anggota_id">
-            @foreach ($anggota as $p)
-                <option value="{{ $p->id }}">{{ $p->id }} ({{$p->nama}})</option>
-            @endforeach
-        </select>
-    @endif
-    <br>
+    label {
+        font-size: 20px
+    }
 
-    <h2>Pengguna ID :</h2>
-    @if (empty($pengguna->id) == False)
-        Pengguna Tidak Ada, <a href="{{route('pengguna.add')}}">Tambahkan Pengguna.</a>
-    @else
-        <select name="pengguna_id">
-            @foreach ($pengguna as $p)
-                <option value="{{ $p->id }}">{{ $p->id }} ({{$p->nama}})</option>
-            @endforeach
-        </select>
-    @endif
-    <br>
+    button {
+        width: 120px;
+    }
+</style>
 
-    <h2>Tanggal Pinjam :</h2>
-    <input type="date" name="tanggal_pinjam" required>
-    <br>
+<div class="card">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Peminjaman</h2>
+        <a href="{{route('peminjaman.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="{{route('peminjaman.save')}}" method="POST">
+            @csrf
 
-    <h2>Tanggal Kembali :</h2>
-    <input type="date" name="tanggal_kembali" required>
-    <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Anggota ID :</label>
+                <div class="col-sm-10">
+                    @if (empty($anggota->id) == False)
+                        Anggota Tidak Ada, <a href="{{route('anggota.add')}}">Tambahkan Anggota.</a>
+                    @else
+                        <select class="form-control" name="anggota_id">
+                            @foreach ($anggota as $p)
+                                <option value="{{ $p->id }}">{{ $p->id }} ({{$p->nama}})</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
+            </div>
 
-    <h2>Status :</h2> 
-    <select name="status">
-        <option value="dipinjam">Dipinjam</option>
-        <option value="kembali">Kembali</option>
-    </select>
-    <br>
-    
-    @if (empty($peminjaman->id) == False)
-        peminjaman Tidak Ada, <a href="{{route('peminjaman.add')}}">Tambahkan peminjaman.</a>
-    @elseif (empty($pengguna->id) == False)
-        Pengguna Tidak Ada, <a href="{{route('pengguna.add')}}">Tambahkan Pengguna.</a>
-    @else
-        <button type="submit">Save Data</button>
-    @endif
-</form>
+            <div class="form-group row">
+                <label class="col-sm-2">Pengguna ID :</label>
+                <div class="col-sm-10">
+                    @if (empty($pengguna->id) == False)
+                        Pengguna Tidak Ada, <a href="{{route('pengguna.add')}}">Tambahkan Pengguna.</a>
+                    @else
+                        <select class="form-control" name="pengguna_id">
+                            @foreach ($pengguna as $p)
+                                <option value="{{ $p->id }}">{{ $p->id }} ({{$p->nama}})</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
+            </div>
 
+            <div class="form-group row">
+                <label class="col-sm-2">Tanggal Pinjam :</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="tanggal_pinjam" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Tanggal Kembali :</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="tanggal_kembali" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Status :</label>
+                <div class="col-sm-10"> 
+                <select class="form-control" name="status">
+                    <option value="dipinjam">Dipinjam</option>
+                    <option value="kembali">Kembali</option>
+                </select>
+            </div>
+            </div>
+            
+            @if (empty($peminjaman->id) == False)
+                peminjaman Tidak Ada, <a href="{{route('peminjaman.add')}}">Tambahkan peminjaman.</a>
+            @elseif (empty($pengguna->id) == False)
+                Pengguna Tidak Ada, <a href="{{route('pengguna.add')}}">Tambahkan Pengguna.</a>
+            @else
+                <div class="action">
+                    <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                        <i class="fa fa-save mr-2"></i> Save
+                    </button>
+                </div>
+            @endif
+        </form>
+    </div>
+</div>
 @endsection

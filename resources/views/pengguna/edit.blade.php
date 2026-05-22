@@ -3,32 +3,77 @@
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('pengguna.update', $pengguna->id)}}" method="POST">
-    @csrf
-    @method("PUT")
+<style>
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+    }
 
-    <a href="{{route('pengguna.index')}}">Kembali</a>
-    <br>
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-    Nama :
-    <input type="text" name="nama" value="{{old('nama', $pengguna->nama)}}" required>
-    <br>
+    label {
+        font-size: 20px
+    }
 
-    Email :
-    <input type="email" name="email" value="{{old('email', $pengguna->email)}}" required>
-    <br>
+    button {
+        width: 120px;
+    }
+</style>
 
-    Password :
-    <input type="text" name="password" value="{{old('password', $pengguna->password)}}" required>
-    <br>
-    
-    Peran :
-    <select name="peran">
-        <option value="admin">Admin</option>
-        <option value="petugas">Petugas</option>
-    </select>
 
-    <button type="submit">Save Data</button>
-</form>
+<div class="card">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Pengguna</h2>
+        <a href="{{route('pengguna.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="{{route('pengguna.update', $pengguna->id)}}" method="POST">
+            @csrf
+            @method("PUT")
+
+            <div class="form-group row">
+                <label class="col-sm-2">Nama :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="nama" value="{{old('nama', $pengguna->nama)}}" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Email :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="email" name="email" value="{{old('email', $pengguna->email)}}" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Password :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="password" value="{{old('password', $pengguna->password)}}" required>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-2">Peran :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="peran">
+                        <option value="admin">Admin</option>
+                        <option value="petugas">Petugas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="action">
+                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection

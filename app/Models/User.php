@@ -17,6 +17,14 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+     protected $fillable = [
+        'name',
+        'email',
+        'username', // field tambahan baru
+        'level',  // field tambahan baru
+        'password',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *

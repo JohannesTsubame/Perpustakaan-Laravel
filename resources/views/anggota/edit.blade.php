@@ -1,64 +1,100 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <style>
-    input, textarea, select{width: 100%}
-
-    form {
+    .card-header {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
     }
 
-    .card-body div, .card-body button{
-        margin-top: 2%;
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    label {
+        font-size: 20px
+    }
+
+    button {
+        width: 120px;
     }
 </style>
 
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('anggota.update', $anggota->id)}}" method="POST">
-    @csrf
-    @method("PUT")
-    <div class="card" style="width:50%;">
-        <div class="card-body" style="font-size: 20px">
-            <a href="{{route('anggota.index')}}">Kembali</a>
-            <br>
-
-            Kode Anggota :
-            <input type="text" name="kode_anggota" value={{old("kode_anggota", $anggota->kode_anggota)}} readonly required>
-            <br>
-
-            Nama :
-            <input type="text" name="nama" value={{old("nama", $anggota->nama)}} required>
-            <br>
-
-            Alamat :
-            <input type="text" name="alamat" value={{old("alamat", $anggota->alamat)}} required>
-            <br>
-
-            No. HP :
-            <input type="text" name="no_hp" value={{old("no_hp", $anggota->no_hp)}} required>
-            <br>
-
-            Email : 
-            <input type="email" name="email" value={{old("email", $anggota->email)}} required>
-            <br>
-
-            Tanggal Daftar :
-            <input type="date" name="tanggal_daftar" value={{old("tanggal_daftar", $anggota->tanggal_daftar)}} required>
-            <br>
-
-            Status :
-            <select name="status" required>
-                    <option value="aktif">aktif</option>
-                    <option value="nonaktif">nonaktif</option>
-            </select>
-            <br>
-        </div>
+<div class="card">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Anggota</h2>
+        <a href="{{route('anggota.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
     </div>
+    <div class="card-body">
+        <form action="{{route('anggota.update', $anggota->id)}}" method="POST">
+            @csrf
+            @method("PUT")
 
-    <button type="submit" class="btn btn-primary" style="width:100%">Save Data</button>
-</form>
+            <div class="form-group row">
+                <label class="col-sm-2">Kode Anggota :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="kode_anggota" value={{old("kode_anggota", $anggota->kode_anggota)}} readonly required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Nama :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="nama" value={{old("nama", $anggota->nama)}} required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Alamat :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="alamat" value={{old("alamat", $anggota->alamat)}} required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">No. HP :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="no_hp" value={{old("no_hp", $anggota->no_hp)}} required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Email :</label>
+                <div class="col-sm-10"> 
+                    <input class="form-control" type="email" name="email" value={{old("email", $anggota->email)}} required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Tanggal Daftar :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="date" name="tanggal_daftar" value={{old("tanggal_daftar", $anggota->tanggal_daftar)}} required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Status :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="status" required>
+                        
+                            <option value="aktif">aktif</option>
+                            <option value="nonaktif">nonaktif</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="action">
+                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection

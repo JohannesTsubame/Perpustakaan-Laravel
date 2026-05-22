@@ -1,74 +1,114 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <style>
-    input, textarea, select{width: 100%}
-
-    form {
+    .card-header {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
     }
 
-    .card-body div, .card-body button{
-        margin-top: 2%;
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    label {
+        font-size: 20px
+    }
+
+    button {
+        width: 120px;
     }
 </style>
 
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('buku.save')}}" method="POST">
-    @csrf
-    <div class="card" style="width:50%;">
-        <div class="card-body" style="font-size: 20px">
-    
-            <a href="{{route('buku.index')}}">Kembali</a>
-            <br>
+<div class="card">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Buku</h2>
+        <a href="{{route('buku.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="{{route('buku.save')}}" method="POST">
+            @csrf
 
-            <h2>Kode Buku :</h2>
-            <input type="text" name="kode_buku" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Kode Buku :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="kode_buku" required>
+                </div>
+            </div>
 
-            <h2>Judul :</h2>
-            <input type="text" name="judul" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Judul :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="judul" required>
+                </div>
+            </div>
 
-            <h2>Penulis :</h2>
-            <input type="text" name="penulis" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Penulis :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="penulis" required>
+                </div>
+            </div>
 
-            <h2>Penerbit :</h2>
-            <input type="text" name="penerbit" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Penerbit :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="penerbit" required>
+                </div>
+            </div>
 
-            <h2>Kategori:</h2>
-            <select name="kategori_id" required>
-                <option value="">--Select--</option>
-                @foreach($kategori as $k)
-                <option value="{{ $k->id}}">
-                    {{ $k->nama_kategori }}
-                </option>
-                @endforeach
-            </select>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Kategori:</label>
+                <div class="col-sm-10">
+                    <select name="kategori_id" class="form-control" required>
+                        <option value="">- - Select - -</option>
+                        @foreach($kategori as $k)
+                        <option value="{{ $k->id}}">
+                            {{ $k->nama_kategori }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
 
-            <h2>Tahun Terbit :</h2> 
-            <input type="number" min="1901" max="2099" step="1" value="2026" name="tahun_terbit" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Tahun Terbit :</label>
+                <div class="col-sm-10"> 
+                    <input class="form-control" type="number" min="1901" max="2099" step="1" value="2026" name="tahun_terbit" required>
+                </div>
+            </div>
 
-            <h2>ISBN :</h2>
-            <input type="text" name="isbn" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">ISBN :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="isbn" required>
+                </div>
+            </div>
 
-            <h2>Jumlah Total :</h2>
-            <input type="number" name="jumlah_total" required>
-            <br>
+            <div class="form-group row">
+                <label class="col-sm-2">Jumlah Total :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" name="jumlah_total" required>
+                </div>
+            </div>
 
-            <h2>Jumlah Tersedia :</h2>
-            <input type="number" name="jumlah_tersedia" required>
-            <br>
-
-            <button type="submit" class="btn btn-primary" style="width:100%">Save Data</button>
+            <div class="form-group row">
+                <label class="col-sm-2">Jumlah Tersedia :</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" name="jumlah_tersedia" required>
+                </div>
+            </div>
+            
+            <div class="action">
+                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+            </div>
         </div>
     </div>
 </form>

@@ -1,71 +1,99 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <style>
-    input, textarea{width: 100%}
-
-    form {
+    .card-header {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
     }
 
-    .card-body div, .card-body button{
-        margin-top: 2%;
+    .action {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    label {
+        font-size: 20px
+    }
+
+    button {
+        width: 120px;
     }
 </style>
 
 @extends('layout.menu')
 @section("contents")
 
-<form action="{{route('anggota.save')}}" method="POST">
-    @csrf
-    <div class="card" style="width:50%;">
-        <div class="card-body">
-
-            <a href="{{route('anggota.index')}}">Kembali</a>
-            </br>
-
-            <div class="form-group" style="font-size: 20px">
-                <h3>Kode Anggota :</h3>
-                <input type="text" name="kode_anggota" required>
-            </div>
-
-            <div class="form-group" style="font-size: 20px">
-                <h3>Nama :</h3>
-                <input type="text" name="nama" required>
-            </div>
-            
-            <div class="form-group" style="font-size: 20px">
-                <h3>Alamat :</h3>
-                <textarea name="alamat" required></textarea>
-            </div>
-            
-            <div class="form-group" style="font-size: 20px">
-                <h3>No. HP :</h3>
-                <input type="text" name="no_hp" required>
-            </div>
-            
-            <div class="form-group" style="font-size: 20px">
-                <h3>Email :</h3> 
-                <input type="email" name="email" required>
-            </div>
-
-            <div class="form-group" style="font-size: 20px">
-                <h3>Tanggal Daftar :</h3>
-                <input type="date" name="tanggal_daftar" required>
-            </div>
-
-            <div class="form-group" style="font-size: 20px">
-                <h3>Status :</h3>
-                <select style ="font-size: 20px" name="status" class="form-control" required>
-                    <option value="aktif">aktif</option>
-                    <option value="nonaktif">nonaktif</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width:100%">Save Data</button>
-        </div>
+      
+    
+<div class="card"">
+    <div class="card-header" style="background: #303a4e">
+        <h2 style="color:white">Tambah Data Anggota</h2>
+        <a href="{{route('anggota.index')}}">
+            <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
+        </a>
     </div>
-</form>
+    <div class="card-body">
+        <form action="{{route('anggota.save')}}" method="POST">
+            @csrf
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Kode Anggota :</label>
+                <div class="col-sm-10">
+                    <input type="text" name="kode_anggota" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Nama :</label>
+                <div class="col-sm-10">
+                    <input type="text" name="nama" class="form-control" required>
+                </div>
+            </div>
+            
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Alamat :</label>
+                <div class="col-sm-10">
+                    <textarea name="alamat" class="form-control" required></textarea>
+                </div>    
+            </div>
+            
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">No. HP :</label>
+                <div class="col-sm-10">
+                    <input type="text" name="no_hp" class="form-control" required>
+                </div>
+            </div>
+            
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Email :</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Tanggal Daftar :</label>
+                <div class="col-sm-10">
+                    <input type="date" name="tanggal_daftar" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row" style="font-size: 20px">
+                <label class="col-sm-2">Status :</label>
+                <div class="col-sm-10">
+                    <select name="status" class="form-control" class="form-control" required>
+                        <option value="aktif">aktif</option>
+                        <option value="nonaktif">nonaktif</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="action">
+                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                    <i class="fa fa-save mr-2"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection

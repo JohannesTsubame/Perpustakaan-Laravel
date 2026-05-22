@@ -28,7 +28,7 @@
 <div class = "Header">       
     <h1>Table Kategori</h1>
 
-    <form action="{{route('anggota.add')}}" class="mt-2">
+    <form action="{{route('kategori.add')}}" class="mt-2">
         <button type="submit" class="btn btn-primary ml-2">
             <i class="fa fa-plus"></i> Add Data     
         </button>

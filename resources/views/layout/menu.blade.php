@@ -32,10 +32,10 @@
 
             <div class="dropdown dropdown-profile">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    <img src="{{ asset("img/Knight.png") }}" class="wd-32 rounded-circle" alt="">
+                    <img src="{{ asset("img/Grub.png") }}" class="wd-32 rounded-circle" alt="">
                     <span class="logged-name">
                         <span class="hidden-xs-down">
-                            The Indie Video Game Character Colloquially Known as the Hollow Knight (Even Though it Isn't the Hollow Knight)
+                            Grub No. 31 From Fog Canyon That Needs Crystal Dash 
                         </span> 
                         <i class="fa fa-angle-down mg-l-3"></i>
                     </span>
@@ -43,7 +43,14 @@
                 <div class="dropdown-menu wd-200">
                     <ul class="list-unstyled user-profile-nav">
                         <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
-                        <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="icon ion-power"></i> Log Out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -75,7 +82,7 @@
             <div id="mainMenu" class="tab-pane active">
                 <ul class="nav am-sideleft-menu">
                     <li class="nav-item">
-                        <a href="{{route('dashboard')}}" class="nav-link">
+                        <a href="{{route('layout.dashboard')}}" class="nav-link">
                             <i class="icon ion-ios-home"></i>
                             <span>Dashboard</span>
                         </a>
