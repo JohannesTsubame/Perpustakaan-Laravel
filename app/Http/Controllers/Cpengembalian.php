@@ -36,7 +36,7 @@ class Cpengembalian extends Controller
         $pengembalian->kondisi_buku = $request->kondisi_buku;
         $pengembalian->save();
 
-        return redirect()->route("pengembalian.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("pengembalian.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit($id) {
@@ -55,13 +55,13 @@ class Cpengembalian extends Controller
         
         $pengembalian->save();
 
-        return redirect()->route("pengembalian.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("pengembalian.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete($id) {
         $pengembalian = Mpengembalian::FindOrFail($id);
         $pengembalian->delete();
 
-        return redirect()->route("pengembalian.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("pengembalian.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

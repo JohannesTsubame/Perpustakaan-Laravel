@@ -27,7 +27,7 @@ class Cpengguna extends Controller
         $pengguna->peran = $request->peran;
         $pengguna->save();
 
-        return redirect()->route("pengguna.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("pengguna.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit($id) {
@@ -45,13 +45,13 @@ class Cpengguna extends Controller
         $pengguna->peran = $request->peran;
         $pengguna->save();
 
-        return redirect()->route("pengguna.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("pengguna.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete($id) {
         $pengguna = Mpengguna::FindOrFail($id);
         $pengguna->delete();
 
-        return redirect()->route("pengguna.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("pengguna.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

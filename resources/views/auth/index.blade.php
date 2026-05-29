@@ -63,7 +63,6 @@
                 For You.
               </p>
                 Hate. Hate.
-
               <hr>
               <p>Don't have an account? <br> <a href="page-signup.html">Sign up Now</a></p>
             </div>

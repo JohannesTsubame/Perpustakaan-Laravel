@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Manggota;
 
 class Canggota extends Controller
 {
     public function index() {
-        $anggota = Manggota::all();
+        $anggota = DB::table("anggota")
+        ->select("anggota.*")
+        ->orderBy("kode_anggota")
+        ->get();
 
         return view("anggota.index", compact("anggota"));
     }
@@ -30,7 +34,7 @@ class Canggota extends Controller
         $anggota->status = $request->status;
         $anggota->save();
 
-        return redirect()->route("anggota.index")->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
+        return redirect()->route("anggota.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit($id) {
@@ -51,13 +55,13 @@ class Canggota extends Controller
         $anggota->status = $request->status;
         $anggota->save();
 
-        return redirect()->route("anggota.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("anggota.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete($id) {
         $anggota = Manggota::FindOrFail($id);
         $anggota->delete();
 
-        return redirect()->route("anggota.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("anggota.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

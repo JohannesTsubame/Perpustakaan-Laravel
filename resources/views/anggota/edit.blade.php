@@ -1,37 +1,66 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-<style>
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-    }
+<head>
+    <style>
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .action {
-        display: flex;
-        justify-content: flex-end;
-    }
+        .action {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-    label {
-        font-size: 20px
-    }
+        label {
+            font-size: 20px
+        }
 
-    button {
-        width: 120px;
-    }
-</style>
+        button {
+            width: 120px;
+        }
+    </style>
+
+    <script>
+        function ConfirmUpdate() {
+            Swal.fire({
+                icon : 'question',
+                iconColor : "#ffae5a",
+                title : 'Are You Sure You Want to Update the Data?',
+                confirmButtonText : 'Update',
+                confirmButtonColor : "#446fff",
+                showCancelButton : true,
+                theme : "dark",
+                background : "#202a3e",
+                reverseButtons : true,
+            }).then((result) => {
+                if (result.isConfirmed){
+                    document.getElementById("Form").submit()
+                }
+            });
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                ConfirmUpdate();
+            }
+        });
+    </script>
+</head>
 
 @extends('layout.menu')
 @section("contents")
 
 <div class="card">
     <div class="card-header" style="background: #303a4e">
-        <h2 style="color:white">Tambah Data Anggota</h2>
+        <h2 style="color:white">Edit Data Anggota</h2>
         <a href="{{route('anggota.index')}}">
             <i class="fa fa-arrow-left" style="color: white; font-size:40px"></i>
         </a>
     </div>
     <div class="card-body">
-        <form action="{{route('anggota.update', $anggota->id)}}" method="POST">
+        <form id = "Form" action="{{route('anggota.update', $anggota->id)}}" method="POST">
             @csrf
             @method("PUT")
 
@@ -89,7 +118,10 @@
             </div>
 
             <div class="action">
-                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                <button type="button"
+                        class="btn btn-primary" 
+                        style="font-size: 20px"
+                        onclick="ConfirmUpdate()">
                     <i class="fa fa-save mr-2"></i> Save
                 </button>
             </div>

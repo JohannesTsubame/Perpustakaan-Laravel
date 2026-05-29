@@ -41,7 +41,7 @@ class Cpeminjaman extends Controller
         $peminjaman->status = $request->status;
         $peminjaman->save();
 
-        return redirect()->route("peminjaman.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("peminjaman.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit($id) {
@@ -62,13 +62,13 @@ class Cpeminjaman extends Controller
         $peminjaman->status = $request->status; 
         $peminjaman->save();
 
-        return redirect()->route("peminjaman.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("peminjaman.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete($id) {
         $peminjaman = Mpeminjaman::FindOrFail($id);
         $peminjaman->delete();
 
-        return redirect()->route("peminjaman.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("peminjaman.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

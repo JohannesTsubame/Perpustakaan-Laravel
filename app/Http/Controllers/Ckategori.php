@@ -29,7 +29,7 @@ class Ckategori extends Controller
         $kategori->deskripsi  = $request->deskripsi;
         $kategori->save();
 
-        return redirect()->route("kategori.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("kategori.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit($id) {
@@ -45,13 +45,13 @@ class Ckategori extends Controller
         $kategori->deskripsi  = $request->deskripsi;
         $kategori->save();
 
-        return redirect()->route("kategori.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("kategori.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete($id) {
         $kategori = Mkategori::FindOrFail($id);
         $kategori->delete();
 
-        return redirect()->route("kategori.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("kategori.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

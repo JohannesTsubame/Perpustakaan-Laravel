@@ -37,7 +37,7 @@ class Cbuku extends Controller
         $buku->kategori_id = $request->kategori_id;
         $buku->save();
 
-        return redirect()->route("buku.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("buku.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
     }
 
     public function edit(int $id) {
@@ -64,13 +64,13 @@ class Cbuku extends Controller
             $buku->save();
         }
 
-        return redirect()->route("buku.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("buku.index")->with('update', ['judul' => 'Success', 'pesan' => 'Data Successfully Updated', 'icon' => 'success']);
     }
 
     public function delete(int $id) {
         $buku = Mbuku::where("id", $id)->first();
         $buku->delete();
 
-        return redirect()->route("buku.index")->with("Sukses", "Berhasil Dihapus");
+        return redirect()->route("buku.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }
