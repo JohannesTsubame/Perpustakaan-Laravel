@@ -17,6 +17,8 @@
     <link href="{{asset('asset/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('asset/css/amanda.css')}}">
+
+    <script src="https://cdn.jsdeliver.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>

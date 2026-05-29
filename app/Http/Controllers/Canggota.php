@@ -30,7 +30,7 @@ class Canggota extends Controller
         $anggota->status = $request->status;
         $anggota->save();
 
-        return redirect()->route("anggota.index")->with("Sukses", "Berhasil Disimpan");
+        return redirect()->route("anggota.index")->with('status', ['judul' => 'Berhasil', 'pesan' => 'Data berhasil disimpan', 'icon' => 'success']);
     }
 
     public function edit($id) {

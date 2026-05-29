@@ -22,8 +22,6 @@
 
 @extends('layout.menu')
 @section("contents")
-
-      
     
 <div class="card"">
     <div class="card-header" style="background: #303a4e">
