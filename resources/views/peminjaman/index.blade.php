@@ -24,11 +24,12 @@
     </style>
 
     <script>
-        function ConfirmDelete(item) {
+        function ConfirmDelete(item, id) {
             Swal.fire({
                 icon : 'warning',
                 iconColor : "#ff2222",
                 title : "Are You Sure You Want to Delete this Data?",
+                text : `Member : ${item}`,
                 confirmButtonText : 'Delete',
                 confirmButtonColor : "#ff2222",
                 showCancelButton : true,
@@ -37,7 +38,7 @@
                 reverseButtons : true,
             }).then((result) => {
                 if (result.isConfirmed){
-                    document.getElementById("Form").submit()
+                    document.getElementById(`Form${id}`).submit()
                 }
             });
         }
@@ -129,12 +130,12 @@
                     </button>
                 </form>
                 <form 
-                id="Form"
+                id="Form{{ $p->id }}"
                 action="{{route('peminjaman.delete', $p->id)}}"
                 method="POST">
                     @csrf
                     @method("DELETE")
-                    <button type="button" onclick="ConfirmDelete('{{ $p->nama_anggota }}')" class="btn btn-danger mr-2 ml-2">
+                    <button type="button" onclick="ConfirmDelete('{{ $p->nama_anggota }}', {{ $p->id }})" class="btn btn-danger mr-2 ml-2">
                         <i class="fa fa-trash"></i> 
                     </button>
                 </form>

@@ -1,24 +1,53 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-<style>
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-    }
+<head>
+    <style>
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .action {
-        display: flex;
-        justify-content: flex-end;
-    }
+        .action {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-    label {
-        font-size: 20px
-    }
+        label {
+            font-size: 20px
+        }
 
-    button {
-        width: 120px;
-    }
-</style>
+        button {
+            width: 120px;
+        }
+    </style>
+
+    <script>
+        function ConfirmAdd() {
+            Swal.fire({
+                icon : 'question',
+                iconColor : "#ffae5a",
+                title : 'Are You Sure You Want to Add the Data?',
+                confirmButtonText : 'Add',
+                confirmButtonColor : "#446fff",
+                showCancelButton : true,
+                theme : "dark",
+                background : "#202a3e",
+                reverseButtons : true,
+            }).then((result) => {
+                if (result.isConfirmed){
+                    document.getElementById("Form").submit()
+                }
+            });
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                ConfirmAdd();
+            }
+        });
+    </script>
+</head>
 
 @extends('layout.menu')
 @section("contents")
@@ -31,7 +60,7 @@
         </a>
     </div>
     <div class="card-body">
-        <form action="{{route('buku.save')}}" method="POST">
+        <form id="Form" action="{{route('buku.save')}}" method="POST">
             @csrf
 
             <div class="form-group row">
@@ -105,7 +134,7 @@
             </div>
             
             <div class="action">
-                <button type="submit" class="btn btn-primary" style="font-size: 20px">
+                <button type="button" onclick="ConfirmAdd()" class="btn btn-primary" style="font-size: 20px">
                     <i class="fa fa-save mr-2"></i> Save
                 </button>
             </div>

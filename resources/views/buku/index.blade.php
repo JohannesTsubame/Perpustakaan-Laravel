@@ -24,21 +24,21 @@
     </style>
 
     <script>
-        function ConfirmDelete(item) {
+        function ConfirmDelete(item, id) {
             Swal.fire({
                 icon : 'warning',
                 iconColor : "#ff2222",
                 title : "Are You Sure You Want to Delete this Data?",
                 text : `Data ID B-${item}`,
                 confirmButtonText : 'Delete',
-                confirmButtonColor : "ff2222",
+                confirmButtonColor : "#ff2222",
                 showCancelButton : true,
                 theme : "dark",
                 background : "#202a3e",
                 reverseButtons : true,
             }).then((result) => {
                 if (result.isConfirmed){
-                    document.getElementById("Form").submit()
+                    document.getElementById(`Form${id}`).submit()
                 }
             });
         }
@@ -59,7 +59,7 @@
             showConfirmButton : false,
             timer : 2800,
             timerProgressBar : true,
-            position :  "bottom-end"
+            position :  "bottom-end",
         });
     </script>
 @elseif(session("update"))
@@ -73,7 +73,7 @@
             showConfirmButton : false,
             timer : 2800,
             timerProgressBar : true,
-            position :  "bottom-end"
+            position :  "bottom-end",
         });
     </script>
 @elseif(session("delete"))
@@ -137,11 +137,12 @@
                     </button>
                 </form>
                 <form 
+                id="Form{{ $b->kode_buku }}"
                 action="{{route('buku.delete', $b->id)}}"
                 method="POST"> 
                     @csrf
                     @method("DELETE")
-                    <button type="button" class="btn btn-danger mr-2 ml-2" onclick="ConfirmDelete({{ $b->kode_buku }})">
+                    <button type="button" class="btn btn-danger mr-2 ml-2" onclick="ConfirmDelete({{ $b->kode_buku }}, {{ $b->kode_buku }})">
                         <i class="fa fa-trash"></i> 
                     </button>
                 </form>

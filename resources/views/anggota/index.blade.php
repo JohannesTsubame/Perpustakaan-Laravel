@@ -24,7 +24,7 @@
     </style>
 
     <script>
-        function ConfirmDelete(item) {
+        function ConfirmDelete(item, id) {
             Swal.fire({
                 icon : 'warning',
                 iconColor : "#ff2222",
@@ -38,7 +38,7 @@
                 reverseButtons : true,
             }).then((result) => {
                 if (result.isConfirmed){
-                    document.getElementById("Form").submit()
+                    document.getElementById(`Form${id}`).submit()
                 }
             });
         }
@@ -134,14 +134,14 @@
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form id="Form"
+                <form id="Form{{ $a->kode_anggota }}"
                       action="{{route('anggota.delete', $a->id)}}"
                       method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="button" 
                             class="btn btn-danger mr-2 ml-2"
-                            onclick="ConfirmDelete({{ $a->kode_anggota }})">
+                            onclick="ConfirmDelete({{ $a->kode_anggota }}, {{ $a->kode_anggota }})">
                         <i class="fa fa-trash"></i>
                     </button>
                 </form>

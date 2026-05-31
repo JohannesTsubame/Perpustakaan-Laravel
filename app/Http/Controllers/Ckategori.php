@@ -52,6 +52,6 @@ class Ckategori extends Controller
         $kategori = Mkategori::FindOrFail($id);
         $kategori->delete();
 
-        return redirect()->route("kategori.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+        return redirect()->route("kategori.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

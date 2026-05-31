@@ -24,21 +24,21 @@
     </style>
 
     <script>
-        function ConfirmDelete(item) {
+        function ConfirmDelete(item, id) {
             Swal.fire({
                 icon : 'warning',
                 iconColor : "#ff2222",
                 title : "Are You Sure You Want to Delete this Data?",
                 text : `Category Name : ${item}`,
                 confirmButtonText : 'Delete',
-                confirmButtonColor : "ff2222",
+                confirmButtonColor : "#ff2222",
                 showCancelButton : true,
                 theme : "dark",
                 background : "#202a3e",
                 reverseButtons : true,
             }).then((result) => {
                 if (result.isConfirmed){
-                    document.getElementById("Form").submit()
+                    document.getElementById(`Form${id}`).submit()
                 }
             });
         }
@@ -123,11 +123,11 @@
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form id="Form" action="{{route('kategori.delete', $k->id)}}" method="POST">
+                <form id="Form{{ $k->id }}" action="{{route('kategori.delete', $k->id)}}" method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="button" 
-                            onclick="ConfirmDelete('{{ $k->nama_kategori }}')" 
+                            onclick="ConfirmDelete('{{ $k->nama_kategori }}', {{ $k->id }})" 
                             class="btn btn-danger mr-2 ml-2">
                         <i class="fa fa-trash"></i>
                     </button>

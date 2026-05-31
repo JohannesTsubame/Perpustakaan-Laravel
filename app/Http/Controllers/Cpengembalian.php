@@ -46,6 +46,8 @@ class Cpengembalian extends Controller
     }
 
     public function update(Request $request, $id) {
+        // return dd();
+
         $pengembalian = Mpengembalian::FindOrFail($id);
 
         $pengembalian->peminjaman_id = $request->peminjaman_id;
@@ -62,6 +64,6 @@ class Cpengembalian extends Controller
         $pengembalian = Mpengembalian::FindOrFail($id);
         $pengembalian->delete();
 
-        return redirect()->route("pengembalian.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+        return redirect()->route("pengembalian.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

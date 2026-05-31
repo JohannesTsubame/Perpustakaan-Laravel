@@ -71,6 +71,6 @@ class Cbuku extends Controller
         $buku = Mbuku::where("id", $id)->first();
         $buku->delete();
 
-        return redirect()->route("buku.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+        return redirect()->route("buku.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

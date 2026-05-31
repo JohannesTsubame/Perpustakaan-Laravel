@@ -50,6 +50,6 @@ class Cdetailpeminjaman extends Controller
         $detail_peminjaman = Mdetailpeminjaman::FindOrFail($id);
         $detail_peminjaman->delete();
 
-        return redirect()->route("detail_peminjaman.index")->ith('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+        return redirect()->route("detail_peminjaman.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
 }

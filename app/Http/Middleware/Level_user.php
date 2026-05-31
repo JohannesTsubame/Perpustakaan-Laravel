@@ -15,8 +15,11 @@ class Level_user
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if (auth()->check() && in_array(auth()->user()->level(), $roles))
+        if (auth()->check() && in_array(auth()->user()->level, $roles)) {
+            return $next($request);
+        }
 
-        return $next($request);
+        abort(403, 'Akses ditolak');
     }
 }
+
