@@ -96,7 +96,7 @@ class Canggota extends Controller
         
         $anggota = DB::table("anggota")
         ->select("anggota.*")
-        ->orderBy("id_anggota")
+        ->orderBy("kode_anggota")
         ->get();
 
         header("Content-type: application/vnd-ms-excel");

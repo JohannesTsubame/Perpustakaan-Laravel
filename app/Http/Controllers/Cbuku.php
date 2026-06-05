@@ -95,8 +95,9 @@ class Cbuku extends Controller
 
     public function print_data() {
         $buku = DB::table("buku")
-        ->select("buku.*")
-        ->orderBy("id_buku")
+        ->leftJoin("kategori", "buku.kategori_id", "=", "kategori.id")
+        ->select("buku.*", "kategori.nama_kategori as nama_kategori", "kategori.deskripsi as deskripsi")
+        ->orderBy("kode_buku")
         ->get();
 
         return view("buku.print_data", compact("buku"));
@@ -105,8 +106,9 @@ class Cbuku extends Controller
     public function export() {
         
         $buku = DB::table("buku")
-        ->select("buku.*")
-        ->orderBy("id_buku")
+        ->leftJoin("kategori", "buku.kategori_id", "=", "kategori.id")
+        ->select("buku.*", "kategori.nama_kategori as nama_kategori", "kategori.deskripsi as deskripsi")
+        ->orderBy("kode_buku")
         ->get();
 
         header("Content-type: application/vnd-ms-excel");

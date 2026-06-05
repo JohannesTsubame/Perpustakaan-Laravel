@@ -60,7 +60,6 @@ class Ckategori extends Controller
     public function print_data() {
         $kategori = DB::table("kategori")
         ->select("kategori.*")
-        ->orderBy("id_kategori")
         ->get();
 
         return view("kategori.print_data", compact("kategori"));
@@ -70,7 +69,6 @@ class Ckategori extends Controller
         
         $kategori = DB::table("kategori")
         ->select("kategori.*")
-        ->orderBy("id_kategori")
         ->get();
 
         header("Content-type: application/vnd-ms-excel");

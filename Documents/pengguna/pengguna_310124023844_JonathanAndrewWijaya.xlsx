@@ -1,0 +1,46 @@
+<body onload="window.print(); window.onafterprint = closeWindow;">
+    <h6>JONATHAN ANDREW WIJAYA - 310124023844</h4>
+    <h1>Data Pengguna </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Email</th>
+                
+                <th>Peran</th>
+            </tr>
+        </thead>
+        <tbody>
+                           <tr>
+                    <td>Gabriel</td>
+                    <td>annoying@boss.com</td>
+                    
+                    <td>admin</td>
+                </tr>
+                            <tr>
+                    <td>Virtue</td>
+                    <td>annoying@ball.com</td>
+                    
+                    <td>petugas</td>
+                </tr>
+                            <tr>
+                    <td>Providence</td>
+                    <td>annoying@square.com</td>
+                    
+                    <td>petugas</td>
+                </tr>
+                            <tr>
+                    <td>Power</td>
+                    <td>annoying@nonboss.com</td>
+                    
+                    <td>admin</td>
+                </tr>
+                    </tbody>
+    </table>
+
+    <script>
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</body>

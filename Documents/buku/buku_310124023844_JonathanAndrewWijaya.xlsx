@@ -1,0 +1,128 @@
+<body onload="window.print(); window.onafterprint = closeWindow;">
+    <h6>JONATHAN ANDREW WIJAYA - 310124023844</h4>
+    <h1>Data Buku </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kode Buku</th>
+                <th>Judul</th>
+                <th>Penulis</th>
+                <th>Penerbit</th>
+                <th>Kategori</th>
+                <th>Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr>
+                    <td>B-1</td>
+                    <td>Hurtbreak Wonderland</td>
+                    <td>P</td>
+                    <td>FRD</td>
+                    <td>Psychological</td>
+                    <td>Sad</td>
+                </tr>
+                            <tr>
+                    <td>B-2</td>
+                    <td>The Meatgrinder</td>
+                    <td>S</td>
+                    <td>PRL</td>
+                    <td>Horror</td>
+                    <td>Scary</td>
+                </tr>
+                            <tr>
+                    <td>B-3</td>
+                    <td>Wait Of The World</td>
+                    <td>SP</td>
+                    <td>P2</td>
+                    <td>Action</td>
+                    <td>Fight</td>
+                </tr>
+                            <tr>
+                    <td>B-4</td>
+                    <td>Waves Of The Starless Sea</td>
+                    <td>F</td>
+                    <td>WRT</td>
+                    <td>Mystery</td>
+                    <td>Confusing</td>
+                </tr>
+                            <tr>
+                    <td>B-5</td>
+                    <td>Like Antennas To Heaven</td>
+                    <td>B</td>
+                    <td>VLE</td>
+                    <td>Science</td>
+                    <td>Learn</td>
+                </tr>
+                            <tr>
+                    <td>B-6</td>
+                    <td>Aesthetic Of Hate</td>
+                    <td>G</td>
+                    <td>HRS</td>
+                    <td>Action</td>
+                    <td>Fight</td>
+                </tr>
+                            <tr>
+                    <td>B-7</td>
+                    <td>Slaves To Power</td>
+                    <td>V</td>
+                    <td>GRD</td>
+                    <td>Psychological</td>
+                    <td>Sad</td>
+                </tr>
+                            <tr>
+                    <td>B-8</td>
+                    <td>Through The Mirror</td>
+                    <td>MR</td>
+                    <td>FRD</td>
+                    <td>Mystery</td>
+                    <td>Confusing</td>
+                </tr>
+                            <tr>
+                    <td>B-9</td>
+                    <td>Claire De Lune</td>
+                    <td>V2</td>
+                    <td>LMB</td>
+                    <td>Romance</td>
+                    <td>Love</td>
+                </tr>
+                            <tr>
+                    <td>B-10</td>
+                    <td>Death At 20.000 Volts</td>
+                    <td>M</td>
+                    <td>LST</td>
+                    <td>Romance</td>
+                    <td>Love</td>
+                </tr>
+                            <tr>
+                    <td>B-11</td>
+                    <td>No Sound, No Memory</td>
+                    <td>BT</td>
+                    <td>VLE</td>
+                    <td>Horror</td>
+                    <td>Scary</td>
+                </tr>
+                            <tr>
+                    <td>B-12</td>
+                    <td>GOD DAMN THE SUN</td>
+                    <td>SI</td>
+                    <td>GRD</td>
+                    <td>Action</td>
+                    <td>Fight</td>
+                </tr>
+                            <tr>
+                    <td>B-13</td>
+                    <td>Light Up The Night</td>
+                    <td>GT</td>
+                    <td>VLE</td>
+                    <td>Psychological</td>
+                    <td>Sad</td>
+                </tr>
+                    </tbody>
+    </table>
+
+    <script>
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</body>

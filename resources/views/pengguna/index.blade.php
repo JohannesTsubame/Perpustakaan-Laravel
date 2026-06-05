@@ -96,11 +96,25 @@
 <div class = "Header">       
     <h1>Table Pengguna</h1>
 
-    <form action="{{route('pengguna.add')}}" class="mt-2">
-        <button type="submit" class="btn btn-primary ml-2">
-            <i class="fa fa-plus"></i> Add Data     
-        </button>
-    </form>
+    <div style="display: flex">
+        <form action="{{route('pengguna.print_data')}}" class="mt-2" target="_blank">
+            <button type="submit" class="btn btn-danger ml-2">
+                <i class="fa fa-print"></i> Print Data     
+            </button>
+        </form>
+
+        <form action="{{route('pengguna.export')}}" class="mt-2" target="_blank">
+            <button type="submit" class="btn btn-success ml-2">
+                <i class="fa fa-table"></i> Export Data     
+            </button>
+        </form>
+
+        <form action="{{route('pengguna.add')}}" class="mt-2">
+            <button type="submit" class="btn btn-primary ml-2">
+                <i class="fa fa-plus"></i> Add Data     
+            </button>
+        </form>
+    </div>
 </div>
 
 
@@ -110,7 +124,7 @@
             <th>No</th>
             <th>Nama</th>
             <th>Email</th>
-            <th>Password</th>
+            {{-- <th>Password</th> --}}
             <th>Peran</th>
             <th>Foto</th>
             <th style="width: 10%">Action</th>
@@ -122,7 +136,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$p->nama}}</td>
             <td>{{$p->email}}</td>
-            <td>{{$p->password}}</td>
+            {{-- <td>{{$p->password}}</td> --}}
             <td>{{$p->peran}}</td>
             <td>
                 @if ($p->pic)

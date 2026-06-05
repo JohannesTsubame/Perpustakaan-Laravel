@@ -78,7 +78,6 @@ class Cpengguna extends Controller
     public function print_data() {
         $pengguna = DB::table("pengguna")
         ->select("pengguna.*")
-        ->orderBy("id_pengguna")
         ->get();
 
         return view("pengguna.print_data", compact("pengguna"));
@@ -88,7 +87,6 @@ class Cpengguna extends Controller
         
         $pengguna = DB::table("pengguna")
         ->select("pengguna.*")
-        ->orderBy("id_pengguna")
         ->get();
 
         header("Content-type: application/vnd-ms-excel");

@@ -1,0 +1,51 @@
+<body onload="window.print(); window.onafterprint = closeWindow;">
+    <h6>JONATHAN ANDREW WIJAYA - 310124023844</h4>
+    <h1>Data Peminjaman </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nama Anggota</th>
+                <th>Nama Pengguna</th>
+                <th>Tanggal Pinjam</th>
+                <th>Tanggal Kembali</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr>
+                    <td>Mindflayer</td>
+                    <td>Gabriel</td>
+                    <td>2222-02-22</td>
+                    <td>2223-02-22</td>
+                    <td>dipinjam</td>
+                </tr>
+                            <tr>
+                    <td>Streetcleaner</td>
+                    <td>Virtue</td>
+                    <td>1212-12-12</td>
+                    <td>0121-02-11</td>
+                    <td>kembali</td>
+                </tr>
+                            <tr>
+                    <td>Mindflayer</td>
+                    <td>Providence</td>
+                    <td>1212-12-12</td>
+                    <td>1121-02-12</td>
+                    <td>dipinjam</td>
+                </tr>
+                            <tr>
+                    <td>Sentry</td>
+                    <td>Power</td>
+                    <td>1331-12-31</td>
+                    <td>2422-02-04</td>
+                    <td>kembali</td>
+                </tr>
+                    </tbody>
+    </table>
+
+    <script>
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</body>

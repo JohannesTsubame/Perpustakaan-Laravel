@@ -1,0 +1,88 @@
+<body onload="window.print(); window.onafterprint = closeWindow;">
+    <h6>JONATHAN ANDREW WIJAYA - 310124023844</h4>
+    <h1>Data Anggota </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kode Anggota</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>No Hp</th>
+                <th>E-Mail</th>
+                <th>Tanggal Daftar</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+                            <tr>
+                    <td>A-1</td>
+                    <td>Swordmachine</td>
+                    <td>PRELUDE</td>
+                    <td>02</td>
+                    <td>sword@machine.com</td>
+                    <td>2020-02-02</td>
+                    <td>aktif</td>
+                </tr>
+                            <tr>
+                    <td>A-2</td>
+                    <td>Drone</td>
+                    <td>LIMBO</td>
+                    <td>11</td>
+                    <td>drone@chirp.com</td>
+                    <td>1111-11-11</td>
+                    <td>aktif</td>
+                </tr>
+                            <tr>
+                    <td>A-3</td>
+                    <td>Streetcleaner</td>
+                    <td>LIMBO</td>
+                    <td>12</td>
+                    <td>street@cleaner.com</td>
+                    <td>1212-12-12</td>
+                    <td>aktif</td>
+                </tr>
+                            <tr>
+                    <td>A-4</td>
+                    <td>Mindflayer</td>
+                    <td>LUST</td>
+                    <td>23</td>
+                    <td>mind@flayer.com</td>
+                    <td>2323-02-23</td>
+                    <td>aktif</td>
+                </tr>
+                            <tr>
+                    <td>A-5</td>
+                    <td>Sentry</td>
+                    <td>WRATH</td>
+                    <td>51</td>
+                    <td>sentry@beep.com</td>
+                    <td>5151-05-01</td>
+                    <td>aktif</td>
+                </tr>
+                            <tr>
+                    <td>A-6</td>
+                    <td>Gutterman</td>
+                    <td>VIOLENCE</td>
+                    <td>72</td>
+                    <td>gutter@man.com</td>
+                    <td>2727-02-07</td>
+                    <td>nonaktif</td>
+                </tr>
+                            <tr>
+                    <td>A-7</td>
+                    <td>Guttertank</td>
+                    <td>VIOLENCE</td>
+                    <td>72</td>
+                    <td>gutter@tank.com</td>
+                    <td>7272-07-02</td>
+                    <td>nonaktif</td>
+                </tr>
+                    </tbody>
+    </table>
+
+    <script>
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</body>

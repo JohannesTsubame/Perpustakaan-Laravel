@@ -18,7 +18,7 @@ class Cpeminjaman extends Controller
             "pengguna.nama as nama_pengguna",
             "pengguna.peran",
             "anggota.nama as nama_anggota",
-            "anggota.status"
+            // "anggota.status"
         )
         ->get();
 
@@ -74,8 +74,15 @@ class Cpeminjaman extends Controller
 
     public function print_data() {
         $peminjaman = DB::table("peminjaman")
-        ->select("peminjaman.*")
-        ->orderBy("id_peminjaman")
+        ->leftJoin("pengguna", "peminjaman.pengguna_id", "=", "pengguna.id")
+        ->leftJoin("anggota", "peminjaman.anggota_id", "=", "anggota.id")
+        ->select(
+            "peminjaman.*",
+            "pengguna.nama as nama_pengguna",
+            "pengguna.peran",
+            "anggota.nama as nama_anggota",
+            // "anggota.status"
+        )
         ->get();
 
         return view("peminjaman.print_data", compact("peminjaman"));
@@ -84,8 +91,15 @@ class Cpeminjaman extends Controller
     public function export() {
         
         $peminjaman = DB::table("peminjaman")
-        ->select("peminjaman.*")
-        ->orderBy("id_peminjaman")
+        ->leftJoin("pengguna", "peminjaman.pengguna_id", "=", "pengguna.id")
+        ->leftJoin("anggota", "peminjaman.anggota_id", "=", "anggota.id")
+        ->select(
+            "peminjaman.*",
+            "pengguna.nama as nama_pengguna",
+            "pengguna.peran",
+            "anggota.nama as nama_anggota",
+            // "anggota.status"
+        )
         ->get();
 
         header("Content-type: application/vnd-ms-excel");

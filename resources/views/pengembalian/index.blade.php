@@ -95,11 +95,25 @@
 <div class = "Header">       
     <h1>Table Pengembalian</h1>
 
-    <form action="{{route('pengembalian.add')}}" class="mt-2">
-        <button type="submit" class="btn btn-primary ml-2">
-            <i class="fa fa-plus"></i> Add Data     
-        </button>
-    </form>
+    <div style="display: flex">
+        <form action="{{route('pengembalian.print_data')}}" class="mt-2" target="_blank">
+            <button type="submit" class="btn btn-danger ml-2">
+                <i class="fa fa-print"></i> Print Data     
+            </button>
+        </form>
+
+        <form action="{{route('pengembalian.export')}}" class="mt-2" target="_blank">
+            <button type="submit" class="btn btn-success ml-2">
+                <i class="fa fa-table"></i> Export Data     
+            </button>
+        </form>
+
+        <form action="{{route('pengembalian.add')}}" class="mt-2">
+            <button type="submit" class="btn btn-primary ml-2">
+                <i class="fa fa-plus"></i> Add Data     
+            </button>
+        </form>
+    </div>
 </div>
 
 

@@ -1,0 +1,34 @@
+<body onload="window.print(); window.onafterprint = closeWindow;">
+    <h6>JONATHAN ANDREW WIJAYA - 310124023844</h4>
+    <h1>Data Pengembalian </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Peminjaman ID</th>
+                <th>Tanggal Dikembalikan</th>
+                <th>Denda</th>
+                <th>Kondisi Buku</th>
+            </tr>
+        </thead>
+        <tbody>
+                           <tr>
+                    <td>P-6</td>
+                    <td>2223-02-22</td>
+                    <td>0</td>
+                    <td>baik</td>
+                </tr>
+                            <tr>
+                    <td>P-7</td>
+                    <td>0121-02-11</td>
+                    <td>1000</td>
+                    <td>baik</td>
+                </tr>
+                    </tbody>
+    </table>
+
+    <script>
+        function closeWindow() {
+            window.close();
+        }
+    </script>
+</body>

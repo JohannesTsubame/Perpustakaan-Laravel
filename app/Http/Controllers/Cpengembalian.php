@@ -69,8 +69,11 @@ class Cpengembalian extends Controller
 
     public function print_data() {
         $pengembalian = DB::table("pengembalian")
-        ->select("pengembalian.*")
-        ->orderBy("id_pengembalian")
+        ->leftJoin("peminjaman", "pengembalian.peminjaman_id", "=", "peminjaman.id")
+        ->select(
+            "pengembalian.*", 
+            "peminjaman.id as peminjaman_id",
+            "peminjaman.tanggal_kembali as tanggal_dikembalikan")
         ->get();
 
         return view("pengembalian.print_data", compact("pengembalian"));
@@ -79,8 +82,11 @@ class Cpengembalian extends Controller
     public function export() {
         
         $pengembalian = DB::table("pengembalian")
-        ->select("pengembalian.*")
-        ->orderBy("id_pengembalian")
+        ->leftJoin("peminjaman", "pengembalian.peminjaman_id", "=", "peminjaman.id")
+        ->select(
+            "pengembalian.*", 
+            "peminjaman.id as peminjaman_id",
+            "peminjaman.tanggal_kembali as tanggal_dikembalikan")
         ->get();
 
         header("Content-type: application/vnd-ms-excel");
