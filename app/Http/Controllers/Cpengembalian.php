@@ -66,4 +66,26 @@ class Cpengembalian extends Controller
 
         return redirect()->route("pengembalian.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
+
+    public function print_data() {
+        $pengembalian = DB::table("pengembalian")
+        ->select("pengembalian.*")
+        ->orderBy("id_pengembalian")
+        ->get();
+
+        return view("pengembalian.print_data", compact("pengembalian"));
+    }
+
+    public function export() {
+        
+        $pengembalian = DB::table("pengembalian")
+        ->select("pengembalian.*")
+        ->orderBy("id_pengembalian")
+        ->get();
+
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=pengembalian_310124023844_JonathanAndrewWijaya.xlsx");
+
+        return view('pengembalian.export', compact('pengembalian'));
+    }
 }

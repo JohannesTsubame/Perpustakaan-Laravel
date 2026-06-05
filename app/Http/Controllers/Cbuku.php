@@ -25,6 +25,15 @@ class Cbuku extends Controller
     }
 
     public function save(Request $request) {
+
+        $pic = $request->file("pic");
+        $filename = null;
+        if ($pic) {
+            $extension = $pic->getClientOriginalExtension();
+            $filename = date("YmdHis") . "." . $extension;
+            $pic->move(public_path("uploads/buku_pic"), $filename);
+        }
+
         $buku = new Mbuku();
         $buku->kode_buku = $request->kode_buku;
         $buku->judul  = $request->judul;
@@ -35,6 +44,7 @@ class Cbuku extends Controller
         $buku->jumlah_total = $request->jumlah_total;
         $buku->jumlah_tersedia = $request->jumlah_tersedia;
         $buku->kategori_id = $request->kategori_id;
+        $buku->pic = $filename;
         $buku->save();
 
         return redirect()->route("buku.index")->with('save', ['judul' => 'Success', 'pesan' => 'Data is Succesfully Saved', 'icon' => 'success']);
@@ -50,6 +60,14 @@ class Cbuku extends Controller
     public function update(Request $request, int $id) {
         $buku = Mbuku::where("id", $id)->first();
 
+        $pic = $request->file("pic");
+        $filename = null;
+        if ($pic) {
+            $extension = $pic->getClientOriginalExtension();
+            $filename = date("YmdHis") . "." . $extension;
+            $pic->move(public_path("uploads/buku_pic"), $filename);
+        }
+
         if ($buku) {
             $buku->kode_buku = $request->kode_buku;
             $buku->judul  = $request->judul;
@@ -60,6 +78,7 @@ class Cbuku extends Controller
             $buku->jumlah_total = $request->jumlah_total;
             $buku->jumlah_tersedia = $request->jumlah_tersedia;
             $buku->kategori_id = $request->kategori_id;
+            $buku->pic = $filename;
 
             $buku->save();
         }
@@ -72,5 +91,27 @@ class Cbuku extends Controller
         $buku->delete();
 
         return redirect()->route("buku.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+    }
+
+    public function print_data() {
+        $buku = DB::table("buku")
+        ->select("buku.*")
+        ->orderBy("id_buku")
+        ->get();
+
+        return view("buku.print_data", compact("buku"));
+    }
+
+    public function export() {
+        
+        $buku = DB::table("buku")
+        ->select("buku.*")
+        ->orderBy("id_buku")
+        ->get();
+
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=buku_310124023844_JonathanAndrewWijaya.xlsx");
+
+        return view('buku.export', compact('buku'));
     }
 }

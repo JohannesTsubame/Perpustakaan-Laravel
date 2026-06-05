@@ -71,4 +71,26 @@ class Cpeminjaman extends Controller
 
         return redirect()->route("peminjaman.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
     }
+
+    public function print_data() {
+        $peminjaman = DB::table("peminjaman")
+        ->select("peminjaman.*")
+        ->orderBy("id_peminjaman")
+        ->get();
+
+        return view("peminjaman.print_data", compact("peminjaman"));
+    }
+
+    public function export() {
+        
+        $peminjaman = DB::table("peminjaman")
+        ->select("peminjaman.*")
+        ->orderBy("id_peminjaman")
+        ->get();
+
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=peminjaman_310124023844_JonathanAndrewWijaya.xlsx");
+
+        return view('peminjaman.export', compact('peminjaman'));
+    }
 }

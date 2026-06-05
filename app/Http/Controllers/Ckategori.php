@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mkategori;
 
+use Illuminate\Support\Facades\DB;
+
 class Ckategori extends Controller
 {
      public function index() {
@@ -53,5 +55,27 @@ class Ckategori extends Controller
         $kategori->delete();
 
         return redirect()->route("kategori.index")->with('delete', ['judul' => 'Success', 'pesan' => 'Data Successfully Deleted', 'icon' => 'success']);
+    }
+
+    public function print_data() {
+        $kategori = DB::table("kategori")
+        ->select("kategori.*")
+        ->orderBy("id_kategori")
+        ->get();
+
+        return view("kategori.print_data", compact("kategori"));
+    }
+
+    public function export() {
+        
+        $kategori = DB::table("kategori")
+        ->select("kategori.*")
+        ->orderBy("id_kategori")
+        ->get();
+
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=kategori_310124023844_JonathanAndrewWijaya.xlsx");
+
+        return view('kategori.export', compact('kategori'));
     }
 }

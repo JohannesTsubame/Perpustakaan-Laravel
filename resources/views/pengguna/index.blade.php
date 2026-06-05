@@ -112,6 +112,7 @@
             <th>Email</th>
             <th>Password</th>
             <th>Peran</th>
+            <th>Foto</th>
             <th style="width: 10%">Action</th>
         </tr>
     </thead>
@@ -123,22 +124,34 @@
             <td>{{$p->email}}</td>
             <td>{{$p->password}}</td>
             <td>{{$p->peran}}</td>
-            <td class="action">
-                <form action="{{route('pengguna.edit', $p->id)}}">
-                    <button type="submit" class="btn btn-info mr-2 ml-2">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </form>
-                <form 
-                id="Form{{ $p->id }}"
-                action="{{route('pengguna.delete', $p->id)}}"
-                method="POST"> 
-                    @csrf
-                    @method("DELETE")
-                    <button type="button" onclick="ConfirmDelete('{{ $p->nama }}', {{ $p->id }})" class="btn btn-danger mr-2 ml-2">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </form>
+            <td>
+                @if ($p->pic)
+                    <a href="{{ asset('uploads/pengguna_pic/' . $p->pic) }}" target=_blank>
+                        <img src="{{ asset('uploads/pengguna_pic/' . $p->pic) }}"
+                            style="width: 100px; height: auto;" />
+                    </a>
+                @else
+                    No Foto
+                @endif
+            </td>
+            <td>
+                <div class="action">
+                    <form action="{{route('pengguna.edit', $p->id)}}">
+                        <button type="submit" class="btn btn-info mr-2 ml-2">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </form>
+                    <form 
+                    id="Form{{ $p->id }}"
+                    action="{{route('pengguna.delete', $p->id)}}"
+                    method="POST"> 
+                        @csrf
+                        @method("DELETE")
+                        <button type="button" onclick="ConfirmDelete('{{ $p->nama }}', {{ $p->id }})" class="btn btn-danger mr-2 ml-2">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
             </td>
         @endforeach
         </tr>

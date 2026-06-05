@@ -13,7 +13,8 @@ class Manggota extends Model
                            "no_hp",
                            "email",
                            "tanggal_daftar",
-                           "status"];
+                           "status",
+                           "pic"];
 
     public function peminjaman() {
         $fk = "angggota_id";

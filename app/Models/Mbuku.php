@@ -15,7 +15,8 @@ class Mbuku extends Model
                            "isbn",
                            "jumlah_total",
                            "jumlah_tersedia",
-                           "kategori_id"]; 
+                           "kategori_id",
+                           "pic"]; 
 
     public function detail_peminjaman() {
         $fk = "buku_id";

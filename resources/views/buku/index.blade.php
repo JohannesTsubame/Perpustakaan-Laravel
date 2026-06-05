@@ -112,6 +112,7 @@
             <th>Penerbit</th>
             <th>Kategori</th>
             <th>Deskripsi</th>
+            <th>Foto</th>
             {{-- <th>Tahun Terbit</th>
             <th>ISBN</th>
             <th>Jumlah Total</th>
@@ -130,22 +131,34 @@
             <td>{{$b->penerbit}}</td>
             <td>{{$b->nama_kategori}}</td>
             <td>{{$b->deskripsi}}</td>
-            <td class="action">
-                <form action="{{route('buku.edit', $b->id)}}">
-                    <button type="submit" class="btn btn-info mr-2 ml-2">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </form>
-                <form 
-                id="Form{{ $b->kode_buku }}"
-                action="{{route('buku.delete', $b->id)}}"
-                method="POST"> 
-                    @csrf
-                    @method("DELETE")
-                    <button type="button" class="btn btn-danger mr-2 ml-2" onclick="ConfirmDelete({{ $b->kode_buku }}, {{ $b->kode_buku }})">
-                        <i class="fa fa-trash"></i> 
-                    </button>
-                </form>
+            <td>
+                @if ($b->pic)
+                    <a href="{{ asset('uploads/buku_pic/' . $b->pic) }}" target=_blank>
+                        <img src="{{ asset('uploads/buku_pic/' . $b->pic) }}"
+                            style="width: 100px; height: auto;" />
+                    </a>
+                @else
+                    No Foto
+                @endif
+            </td>
+            <td>
+                <div class="action">
+                    <form action="{{route('buku.edit', $b->id)}}">
+                        <button type="submit" class="btn btn-info mr-2 ml-2">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                    </form>
+                    <form 
+                    id="Form{{ $b->kode_buku }}"
+                    action="{{route('buku.delete', $b->id)}}"
+                    method="POST"> 
+                        @csrf
+                        @method("DELETE")
+                        <button type="button" class="btn btn-danger mr-2 ml-2" onclick="ConfirmDelete({{ $b->kode_buku }}, {{ $b->kode_buku }})">
+                            <i class="fa fa-trash"></i> 
+                        </button>
+                    </form>
+                </div>
             </td>
         @endforeach
         </tr>

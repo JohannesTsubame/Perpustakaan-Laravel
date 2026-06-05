@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="card-body">
-        <form id="Form" action="{{route('anggota.save')}}" method="POST">
+        <form id="Form" action="{{route('anggota.save')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group row" style="font-size: 20px">
                 <label class="col-sm-2">Kode Anggota :</label>
@@ -111,6 +111,18 @@
                         <option value="aktif">aktif</option>
                         <option value="nonaktif">nonaktif</option>
                     </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Foto</label>
+                <div class="col-sm-10">
+                    <input type="file" name="pic" class="form-control" accept=".jpg, .jpeg, .png, .webp">
+                </div>
+                <div class ="error" style="margin-top: 10px">
+                    @error('pic')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
 

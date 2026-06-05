@@ -60,7 +60,7 @@
         </a>
     </div>
     <div class="card-body">
-        <form id="Form" action="{{route('buku.save')}}" method="POST">
+        <form id="Form" action="{{route('buku.save')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group row">
@@ -130,6 +130,18 @@
                 <label class="col-sm-2">Jumlah Tersedia :</label>
                 <div class="col-sm-10">
                     <input class="form-control" type="number" name="jumlah_tersedia" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">Foto</label>
+                <div class="col-sm-10">
+                    <input type="file" name="pic" class="form-control" accept=".jpg, .jpeg, .png, .webp">
+                </div>
+                <div class ="error" style="margin-top: 10px">
+                    @error('pic')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
             
