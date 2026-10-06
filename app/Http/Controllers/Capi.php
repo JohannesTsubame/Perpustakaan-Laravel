@@ -65,7 +65,7 @@ class Capi extends Controller
             ], 401, [], JSON_PRETTY_PRINT);
         }
 
-        // $data = Mbuku::get();
+        // $data = Mbuku::get();                                                                                                
         $data = DB::table("buku")
         ->leftJoin("kategori", "buku.kategori_id", "=", "kategori.id")
         ->select("buku.*", "kategori.nama_kategori as nama_kategori", "kategori.deskripsi as deskripsi")
