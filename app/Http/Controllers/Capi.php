@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Mbuku;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class Capi extends Controller
 {
@@ -16,6 +17,10 @@ class Capi extends Controller
             'message' => 'Item list succesfullly retrieved',
             'data'    => $data,
         ], 200, [], JSON_PRETTY_PRINT);
+    }
+
+    public function store1(Request $request) {
+
     }
 
     public function buku2()
@@ -51,26 +56,6 @@ class Capi extends Controller
         }
 
         $data = Mbuku::get();
-        return response()->json($data, 200, [], JSON_PRETTY_PRINT);
-    }
-
-    public function buku5(Request $request){
-        $apiKey = $request->header('X-API-KEY');
-        $validApiKey = '123456';
-
-        if (!$apiKey || $apiKey !== $validApiKey) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'API Key invalid or not found'
-            ], 401, [], JSON_PRETTY_PRINT);
-        }
-
-        // $data = Mbuku::get();                                                                                                
-        $data = DB::table("buku")
-        ->leftJoin("kategori", "buku.kategori_id", "=", "kategori.id")
-        ->select("buku.*", "kategori.nama_kategori as nama_kategori", "kategori.deskripsi as deskripsi")
-        ->orderBy("kode_buku")
-        ->get();
         return response()->json($data, 200, [], JSON_PRETTY_PRINT);
     }
 
